@@ -31,7 +31,7 @@ class Menu extends Component {
             </CardImgOverlay>
           </Card>
         </div>
-      )
+      );
     });
 
     return (

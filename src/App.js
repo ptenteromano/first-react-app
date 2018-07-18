@@ -11,12 +11,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      dishes: DISHES,
-      dish: null
+      dishes: DISHES
     };
   }
-
-
 
   render() {
     return (
