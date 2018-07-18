@@ -3,14 +3,6 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
 class DishDetail extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      comments: null
-    };
-  }
-
   properDate(dateStr) {
     var date = new Date(dateStr);
     return ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
@@ -62,12 +54,14 @@ class DishDetail extends Component {
     if(this.props.dish) {
       console.log(this.props.dish.comments);
       return(
-        <div className="row">
-          <div className="col-12 col-md-5 m-1">
-            {this.renderDish(this.props.dish)}
-          </div>
-          <div className="col-12 col-md-5 m-1">
-            {this.renderComments(this.props.dish.comments)}
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-5 m-1">
+              {this.renderDish(this.props.dish)}
+            </div>
+            <div className="col-12 col-md-5 m-1">
+              {this.renderComments(this.props.dish.comments)}
+            </div>
           </div>
         </div>
       );
