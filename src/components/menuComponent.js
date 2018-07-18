@@ -16,11 +16,8 @@ class Menu extends Component {
     this.setState({ selectedDish: dish })
   }
 
-  // create the menu variable, rendering all items in the array
-  // then return the container with the menu variable in the list
   render() {
 
-    // maps every dish in the array to new 'const menu'
     const menu = this.props.dishes.map((dish) => {
       return (
         <div key={dish.id} className="col-12 col-md-5 m-1">
