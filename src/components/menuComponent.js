@@ -4,7 +4,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 class Menu extends Component {
 
   constructor(props) {
-    super(props); // required for any class defined component
+    super(props);
   }
 
   render() {
