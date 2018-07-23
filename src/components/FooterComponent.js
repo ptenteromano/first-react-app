@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+/* eslint "no-unused-vars": "off" */
 function Footer(props) {
   return (
     <div className="footer">
