@@ -27,13 +27,13 @@ class Header extends Component {
         <Navbar dark expand="md">
           <div className="container">
             {/* toggles collapsed navbar on small screens */}
-            <NavbarToggler onClick={this.toggleNav} />
+            <NavbarToggler onClick={this.toggleNav} className="mr-2" />
             <NavbarBrand className="mr-auto" href="/">
               <img src="assets/images/logo.png" height="30" width="41"
                 alt="Ristorante Con Fusion" />
             </NavbarBrand>
             {/* Collapse nav bar on less than medium size screens, hidden on medium+ */}
-            <Collapse isNavOpen={this.state.isOpen} navbar>
+            <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav navbar>
                 <NavItem>
                   <NavLink className="nav-link" to="/home">
