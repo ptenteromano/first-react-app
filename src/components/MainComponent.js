@@ -37,13 +37,24 @@ class Main extends Component {
       );
     };
 
+    const DishWithId = ({match}) => {
+      // convert the match objects param info into an int using base 10
+      return (
+        <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10)[0])} 
+          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
+        />
+      );
+    };
+
     return (
       <div>
         <Header />
 
         <Switch>
           <Route path="/home" component={HomePage} />
+          {/* order matters for next two '/menu', along with 'exact' */}
           <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} /> } />
+          <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
           {/* redirect stops any unknown routes from being accessed */}
           <Redirect to="/home" />
