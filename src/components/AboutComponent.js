@@ -2,15 +2,35 @@ import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function About(props) {
+function RenderLeader({leader}) {
+  return (
+    <Media>
+      <Media left top col="1">
+        <Media object width="180px" src={leader.image} alt={leader.name}/>
+      </Media>
+      <Media right>
+        <Media heading>
+          {leader.name}<br/>
+          {leader.designation}
+        </Media>
+        <Media body>
+          {leader.description}
+        </Media>
+      </Media>
+    </Media>
+  );
+}
 
+
+
+function About(props) {
   const leaders = props.leaders.map((leader) => {
     return (
-      <div key={leader.id} >
-        <p>Leader {leader.name} </p>
+      <div key={leader.id} className="col-12 m-2">
+        <RenderLeader leader={leader} />
       </div>
     );
-});
+  });
 
   return(
     <div className="container">
