@@ -47,11 +47,11 @@ class Main extends Component {
       );
     };
 
-    const AboutUs = ({match}) => {
-      return (
-        <About leaders={this.state.leaders} />
-      );
-    };
+    // const AboutUs = ({match}) => {
+    //   return (
+    //     <About leaders={this.state.leaders} />
+    //   );
+    // };
 
     return (
       <div>
@@ -63,7 +63,7 @@ class Main extends Component {
           <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} /> } />
           <Route path="/menu/:dishId" component={DishWithId} />
           <Route exact path="/contactus" component={Contact} />
-          <Route path="/aboutus" component={AboutUs} />
+          <Route path="/aboutus" component={() => <About leaders={this.state.leaders} /> } />
           {/* redirect stops any unknown routes from being accessed */}
           <Redirect to="/home" />
         </Switch>
