@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, Row, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 // only class components can handle controlled forms
@@ -99,6 +99,7 @@ class Contact extends Component {
                     onChange={this.handleInputChange} />
                 </Col>
               </FormGroup>
+
               <FormGroup row>
                 <Label htmlFor="lastname" md={2}>Last Name</Label>
                 <Col md={10}>
@@ -108,6 +109,7 @@ class Contact extends Component {
                     onChange={this.handleInputChange} />
                 </Col>
               </FormGroup>
+
               <FormGroup row>
                 <Label htmlFor="telnum" md={2}>Phone Number</Label>
                 <Col md={10}>
@@ -117,6 +119,7 @@ class Contact extends Component {
                     onChange={this.handleInputChange} />
                 </Col>
               </FormGroup>
+
               <FormGroup row>
                 <Label htmlFor="email" md={2}>Email</Label>
                 <Col md={10}>
@@ -126,6 +129,7 @@ class Contact extends Component {
                     onChange={this.handleInputChange} />
                 </Col>
               </FormGroup>
+
               <FormGroup row>
                 <Col md={{ size: 6, offset: 2 }}>
                   <FormGroup check>
@@ -146,6 +150,7 @@ class Contact extends Component {
                   </Input>  
                 </Col>                
               </FormGroup>
+
               <FormGroup row>
                 <Label htmlFor="message" md={2}>Your Feedback</Label>
                 <Col md={10}>
@@ -155,6 +160,7 @@ class Contact extends Component {
                     onChange={this.handleInputChange} />
                 </Col>
               </FormGroup>
+
               <FormGroup row>
                 <Col md={{ size: 10, offset: 2 }}>
                   <Button type="primary" color="primary">
