@@ -1,6 +1,10 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import React, { Component } from 'react';
+import {
+  Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
+  Button, Modal, ModalBody, ModalHeader, ModalFooter, Label, Row, Col
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 
 // functional component - if a component is rendered purely based
 // on props passed to it without changing state
@@ -46,6 +50,7 @@ function RenderComments({comments}) {
               </li>
             ))}
           </ul>
+          <CommentForm/>
         </div>
     );
   }
@@ -56,12 +61,8 @@ function RenderComments({comments}) {
   }
 }
 
-// arrow syntax, seems like eslint wants semi at end of arrow's
-// calls the other functions bove inside
 const DishDetail = (props) => {
-  console.log(props.comments);
-  console.log("------");
-  console.log(props);
+
   return(
     <div className="container">
       <div className="row">
@@ -90,5 +91,98 @@ const DishDetail = (props) => {
     </div>
   );
 };
+
+// assignment 3 start
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => (val) && (val.length >= len);
+
+class CommentForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modal: false
+    };
+
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
+  handleSubmit(values) {
+    alert("values" + JSON.stringify(values));
+  }
+
+  render() {
+    return (
+      <div>
+        <Button color="secondary" onClick={this.toggleModal}>Submit Comment</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+          <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            <ModalHeader>Submit Comment</ModalHeader>
+            <ModalBody>
+              <Row className="form-group">
+                <Label htmlFor="rating" md={2}>Rating</Label>
+                <Col md={12}>
+                  <Control.select model=".rating" name="rating"
+                    className="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Control.select>
+                </Col>
+              </Row>
+              
+              <Row className="form-group">
+                <Label htmlFor="name" md={"auto"}>Your Name</Label>
+                <Col md={12}>
+                  <Control.text model=".name" id="name" name="name"
+                    placeholder="Name"
+                    className="form-control"
+                    validators={{
+                      minLength: minLength(1), maxLength: maxLength(20)
+                    }}
+                  />
+                  <Errors
+                    className="text-danger"
+                    model=".name"
+                    show="touched"
+                    messages={{
+                      minLength: "Must be more than one character",
+                      maxLength: 'Must be more 20 characters or less'
+                    }}
+                  />
+                </Col>
+              </Row>
+            
+             <Row className="form-group">
+                <Label htmlFor="comment" md={"auto"}>Comment</Label>
+                <Col md={12}>
+                  <Control.textarea model=".comment" id="comment" name="message"
+                    rows="6"
+                    className="form-control" />
+                </Col>
+             </Row>
+
+            </ModalBody>
+            <ModalFooter>
+              <Button type="primary" color="primary" onClick={this.toggleModal}>
+                Submit
+              </Button>
+            </ModalFooter>
+          </LocalForm>
+        </Modal>
+      </div>
+    );
+  }
+
+}
 
 export default DishDetail;
