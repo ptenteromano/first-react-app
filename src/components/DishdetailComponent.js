@@ -144,22 +144,22 @@ class CommentForm extends Component {
               </Row>
               
               <Row className="form-group">
-                <Label htmlFor="name" md={"auto"}>Your Name</Label>
+                <Label htmlFor="author" md={"auto"}>Your Name</Label>
                 <Col md={12}>
-                  <Control.text model=".name" id="name" name="name"
+                  <Control.text model=".author" id="author" name="author"
                     placeholder="Name"
                     className="form-control"
                     validators={{
-                      minLength: minLength(1), maxLength: maxLength(20)
+                      minLength: minLength(3), maxLength: maxLength(20)
                     }}
                   />
                   <Errors
                     className="text-danger"
-                    model=".name"
+                    model=".author"
                     show="touched"
                     messages={{
-                      minLength: "Must be more than one character",
-                      maxLength: 'Must be more 20 characters or less'
+                      minLength: "Must be more than three character",
+                      maxLength: 'Must be more 15 characters or less'
                     }}
                   />
                 </Col>
