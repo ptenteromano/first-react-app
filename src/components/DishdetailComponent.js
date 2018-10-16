@@ -54,9 +54,8 @@ function RenderComments({comments, postComment, dishId}) {
             <Stagger in>
               {comments.map((comment) => {
                 return (
-                  /* eslint "react/jsx-key": "off" */
-                  <Fade in>
-                    <li key={comment.id}>
+                  <Fade in key={comment.id}>
+                    <li>
                       <p>{comment.comment}</p>
                       <p>-- {comment.author}, {properDate(comment.date)}</p>
                     </li>
