@@ -10,7 +10,6 @@ import { baseUrl } from '../shared/baseUrl';
 function RenderMenuItem({ dish }) {
   return(
     <Card>
-      {/* using backquotes here for string interpolation */}
       <Link to={`/menu/${dish.id}`}>
         <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
         <CardImgOverlay body className="ml-5">
@@ -73,5 +72,4 @@ const Menu = (props) => {
   }
 };
 
-// need to export so it can be used
 export default Menu;
