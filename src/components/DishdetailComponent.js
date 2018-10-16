@@ -52,17 +52,17 @@ function RenderComments({comments, postComment, dishId}) {
           <h3>Comments</h3>
           <ul className="list-unstyled">
             <Stagger in>
-            {comments.map((comment) => {
-              return (
-                /* eslint "react/jsx-key": "off" */
-                <Fade in>
-                  <li key={comment.id}>
-                    <p>{comment.comment}</p>
-                    <p>-- {comment.author}, {properDate(comment.date)}</p>
-                  </li>
-                </Fade>
-              );
-            })}
+              {comments.map((comment) => {
+                return (
+                  /* eslint "react/jsx-key": "off" */
+                  <Fade in>
+                    <li key={comment.id}>
+                      <p>{comment.comment}</p>
+                      <p>-- {comment.author}, {properDate(comment.date)}</p>
+                    </li>
+                  </Fade>
+                );
+              })}
             </Stagger>
           </ul>
           <CommentForm dishId={dishId} postComment={postComment} />

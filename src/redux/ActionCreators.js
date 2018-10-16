@@ -1,6 +1,49 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
+// assignment 4 feedback to server
+export const postFeedback = (firstName, lastName, telNum, email, agree, contact, msg) => () => {
+  const newFeedback = {
+    firstname: firstName,
+    lastname: lastName,
+    telnum: telNum,
+    email: email,
+    agree: agree,
+    contactType: contact,
+    message: msg,
+  };
+  newFeedback.date = new Date().toISOString();
+
+  return fetch(baseUrl + 'feedback', {
+    method: 'POST',
+    body: JSON.stringify(newFeedback),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+      error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      })
+    .then(response => response.json())
+    .then(response => alert(JSON.stringify(response)))
+    .catch(error => {
+      console.log("Post FeedBack: " + error.message);
+      alert("Your Feedback could not be posted\nError: " + error.message);
+    });
+};
+
 export const addComment = (comment) => ({
   type: ActionTypes.ADD_COMMENT,
   payload: comment
@@ -42,7 +85,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     .then(response => dispatch(addComment(response)))
     .catch(error => {
       console.log("Post Comments: " + error.message);
-          alert("Your comment could not be posted\nError: " + error.message);
+      alert("Your comment could not be posted\nError: " + error.message);
     });
 };
 
