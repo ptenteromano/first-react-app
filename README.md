@@ -5,6 +5,12 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Table of Contents
 
+- npm run build -- production
+- put contents of build folder into json-server/public/
+- json-server —watch db.json -d 2000 -p 3001
+
+using yarn locally, not npm (yarn.lock)
+
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)

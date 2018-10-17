@@ -36,10 +36,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Main extends Component {
 
-  constructor(props) {
-    super(props);    
-  }
-
   // gets called after Main component gets mounted
   componentDidMount() {
     this.props.fetchDishes();

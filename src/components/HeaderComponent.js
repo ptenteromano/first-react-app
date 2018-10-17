@@ -33,9 +33,7 @@ class Header extends Component {
 
   handleLogin(event) {
     this.toggleModal();
-    // eslint-disable-next-line
-    alert("Username: " + this.username.value + '\n' + "Password: " + this.password.value +
-      '\n' + "Remember: " + this.remember.checked);
+    alert(`Username: ${this.username.value} \n Password: ${this.password.value} \n Remember: ${this.remember.checked}`);
     event.preventDefault();
   }
 
